@@ -47,6 +47,12 @@ Counts are **412 unique report IDs**, not 427 export rows. Classification execut
 `analysis.json` records the full disjoint sets of IDs. Five unusual bodies remain explicitly
 unresolved within the classifier's parser group; the export does not establish another cause.
 
+**Later desk update:** #4471 closed on **2026-10-05**. Parser: **fixed**, reason
+`fix(dates): parse dd/mm for eu locales` → issue #1 closed **completed**. Hint: **won't fix**,
+reason `booking-v3 form retired` → issue #2 closed **not planned**. These are different outcomes,
+not two fixes. The update appeared on the course page after the first claim accepted the tickets;
+its source and verbatim reasons are preserved in `src/lib/data/engineering-update-4471.json`.
+
 ### Deliverables
 
 - Signed source: [`src/routes/kb/incidents/4471-split/+page.svx`](src/routes/kb/incidents/4471-split/+page.svx).
@@ -83,10 +89,12 @@ The rendered files contain the entire visible page, even without JavaScript. Ser
 over HTTP for interactive controls; GitHub's source viewer displays HTML as source rather than
 executing it. No public web hosting is required for these committed artifacts.
 
-The export is a snapshot, not a connection to the live support system. Rebuild after data
+The export is a snapshot, not a connection to the live support system. The later engineering
+update is attributed course evidence, not independent production verification. Rebuild after data
 updates, and review prose against computed output. Receiving a report and merging it are
-different events: the July merge spike is not the incident's beginning. No production fix or
-external support-system change is claimed by this repository.
+different events: the July merge spike is not the incident's beginning. This harness did not
+ship the production fix or change the external support system. New reports after closure need
+current reproduction, not automatic attachment to a closed ticket or an assumption of repair.
 
 ### Provenance
 

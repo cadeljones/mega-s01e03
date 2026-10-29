@@ -1,0 +1,22 @@
+{
+  "source": "https://hq.mega.dev/challenges/what-it-shows",
+  "observedAt": "2026-10-29",
+  "ticket": 4471,
+  "closedAt": "2026-10-05",
+  "outcomes": [
+    {
+      "cause": "parser",
+      "status": "fixed",
+      "reason": "fix(dates): parse dd/mm for eu locales",
+      "issue": "https://github.com/cadeljones/mega-s01e03/issues/1",
+      "githubCloseReason": "completed"
+    },
+    {
+      "cause": "hint",
+      "status": "won't fix",
+      "reason": "booking-v3 form retired",
+      "issue": "https://github.com/cadeljones/mega-s01e03/issues/2",
+      "githubCloseReason": "not planned"
+    }
+  ]
+}

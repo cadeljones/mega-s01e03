@@ -30,6 +30,7 @@ No tenant, unsupported locale, contradictory reproduction or unknown cause means
 - Keep one engineering issue per established cause and update counts using unique report IDs.
 - Reproduce each problem, test its own fix, and check anomalous bodies before closure.
 - Keep export-time counts separate from the desk's later arrivals; review pages against rendered tables, not old prose.
+- Record closure reasons separately. For #4471, engineering says parser fixed but hint won't fix because booking-v3 was retired. New reports after closure require a current reproduction before reopening, following up, or attaching to history.
 
 <DedupeExplorer />
 

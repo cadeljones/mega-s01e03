@@ -59,3 +59,15 @@ test('rendered page has real component output, issue links, desk ref and no miss
   assert.ok(html.includes('<svg'));
   assert.ok(html.includes('client.js'));
 });
+
+test('closure preserves fixed versus wont-fix, rather than treating all closed tickets as repaired', () => {
+  const update = JSON.parse(readFileSync('src/lib/data/engineering-update-4471.json', 'utf8'));
+  assert.equal(update.closedAt, '2026-10-05');
+  assert.deepEqual(update.outcomes.map((o) => [o.cause, o.status, o.githubCloseReason]), [
+    ['parser', 'fixed', 'completed'], ['hint', "won't fix", 'not planned'],
+  ]);
+  const html = readFileSync('rendered/kb/incidents/4471-split/index.html', 'utf8');
+  for (const text of ['booking-v3 form retired', 'closed: completed', 'closed: not planned', '2026-10-05']) {
+    assert.ok(html.includes(text), text);
+  }
+});

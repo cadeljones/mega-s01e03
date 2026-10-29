@@ -4,6 +4,8 @@
 
 ## Evidence and scope
 
+**Later engineering outcome:** the course challenge page, read 2026-10-29, reports #4471 closed on **2026-10-05** and parser **fixed**, reason: `fix(dates): parse dd/mm for eu locales`. This ticket is closed **completed** on that attributed evidence, not because this harness shipped a patch or independently verified production. The five unusual reports below remain documented uncertainty.
+
 The export contains 427 rows but only 412 distinct report IDs. Deduplicate by `id`, restrict to `mergedInto === 4471`, resolve each tenant from `src/lib/data/tenants`, and execute `causeOf` from `src/lib/kb/causes.ts`. Do not classify by subject, browser locale, or `meta.intakeTag`.
 
 For a day-first tenant, app/email reports and booking-v2 form reports belong here. The shared parser reads month first even though the tenant writes day first. Day-first booking-v3 **form** reports belong in the separate hint issue. A booking-v3 tenant's app/email reports still belong here.

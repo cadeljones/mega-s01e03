@@ -1,8 +1,8 @@
 ---
 layout: runbook
-title: '#4471 reopened: two date problems, not one fix'
+title: '#4471: two date problems, two closure outcomes'
 owner: cadeljones + OpenCode
-status: active
+status: closed
 reviewed: 2026-10-29
 signature: 'cadeljones / OpenCode (openai/gpt-6.1-sol)'
 ---
@@ -12,6 +12,7 @@ signature: 'cadeljones / OpenCode (openai/gpt-6.1-sol)'
   import QueueTimeline from '#lib/kb/QueueTimeline.svelte';
   import DedupeExplorer from '#lib/kb/DedupeExplorer.svelte';
   import SplitEvidence from '#lib/kb/SplitEvidence.svelte';
+  import DeskDisposition from '#lib/kb/DeskDisposition.svelte';
   import Callout from '#lib/kb/Callout.svelte';
   import RenderStamp from '#lib/kb/RenderStamp.svelte';
   const issueLinks = {
@@ -20,11 +21,13 @@ signature: 'cadeljones / OpenCode (openai/gpt-6.1-sol)'
   };
 </script>
 
-The [old incident page](/kb/incidents/4471) says this is one known parser bug with one fix queued. Its live components contradict its prose. The exported reports separate into a shared-parser problem and a booking-form hint problem. They need separate tickets and separate checks before closure. Neither fix has been verified here.
+The [old incident page](/kb/incidents/4471) says this is one known parser bug with one fix queued. Its live components contradict its prose. The exported reports separate into a shared-parser problem and a booking-form hint problem. The later engineering update closes them for different reasons: parser fixed, hint won't fix because its form was retired.
 
 <Callout>
-For incoming date reports, stop merging on subject alone now. Look up the tenant's locale and booking-form version, then check the channel. The desk keeps working while engineering investigates.
+For incoming date reports, stop merging on subject alone now. Look up the tenant's locale and booking-form version, then check the channel and closure outcome. The desk's work continues after an incident closes.
 </Callout>
+
+<DeskDisposition />
 
 ## What the data shows
 
@@ -32,7 +35,7 @@ For incoming date reports, stop merging on subject alone now. Look up the tenant
 
 The table executes the supplied classifier on unique IDs merged into #4471. Intake tags reflect a browser-based guess, not a tenant lookup. Tenant locale comes from the directory; day-first order is computed using the platform's `Intl.DateTimeFormat`, not inferred from country labels.
 
-### Two problems, two fixes
+### Two distinct problems
 
 - **Parser:** the shared parser reads month first, while the tenant writes day first. Track it in the [parser issue](https://github.com/cadeljones/mega-s01e03/issues/1). For example, R-41200 reports 7 April becoming 4 July. App/email from a booking-v3 tenant still uses this classification.
 - **Hint:** booking-v3 tells people `MM/DD/YYYY`, but reads form input in the tenant's day-first order. Track it in the [hint issue](https://github.com/cadeljones/mega-s01e03/issues/2). R-41241 reports arrivals on 8 June instead of 6 August. Correcting the shared parser alone does not correct the misleading form hint.
@@ -53,7 +56,7 @@ The chart distinguishes when people reported a problem from when the desk combin
 2. Find the tenant, its locale and booking-form version in the directory. Record the channel. Browser locale, intake tag and matching subject are not enough.
 3. For a day-first tenant, a **booking-v3 form** report goes to the hint issue. Other channels, or booking-v2 forms, go to the parser issue under the current classifier.
 4. If the tenant is unknown, the locale is not day first, the reproduction disagrees, or the symptom remains unexplained, keep the report unmerged for investigation. Unknown cause is not permission to merge. Add new evidence and split a new problem when established.
-5. Update counts by unique ID and distinguish the exported snapshot from later arrivals. Link each report to its cause's issue; do not close both issues when only one fix ships.
+5. Update counts by unique ID and distinguish the exported snapshot from later arrivals. Check the engineering outcome before merging into a closed issue: reports after the parser fix or claiming to use the retired booking-v3 form require fresh reproduction and investigation. Reopen or create a linked follow-up when supported; do not treat closed as fixed or silently absorb a regression.
 
 ### Check the rule against real cases
 
@@ -65,6 +68,6 @@ The same subject may hide different causes, even for the same tenant if the chan
 
 [Decision 0002](/kb/decisions/0002-dedupe-by-cause) supersedes the subject-only rule in accepted decision 0001. The historical accepted record remains unchanged. [Current triage](/kb/triage/dedupe) points here and applies the new rule immediately; this is not just a suggestion to fix the desk later.
 
-This page is a review of the 2026-10-04 export, not a live ticket-system connection. Rebuild the components after new reports or tenant changes, re-read contradictory prose, and refresh `reviewed` only after that review. Do not hardcode computed counts in this page.
+This page reviews the 2026-10-04 export and the later course engineering update; it is not a live ticket-system connection. The five unusual reports remain documented, not independently resolved by this review. Rebuild the components after new reports or tenant changes, re-read contradictory prose, and refresh `reviewed` only after that review. Do not hardcode computed counts in this page.
 
 <RenderStamp {signature} />

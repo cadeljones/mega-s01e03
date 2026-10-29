@@ -4,6 +4,8 @@
 
 ## Evidence and scope
 
+**Later engineering outcome:** the course challenge page, read 2026-10-29, reports #4471 closed on **2026-10-05** and hint **won't fix**, reason: `booking-v3 form retired`. This ticket is closed **not planned**, not completed/fixed. Retirement removes the form; it does not mean the misleading hint was repaired. Keep these historical reports and investigate any new claim of the retired form still being used.
+
 The export has 427 rows, 412 distinct IDs; deduplicate by `id` before counting. Resolve the tenant's locale and booking form from `src/lib/data/tenants`, then run `causeOf` in `src/lib/kb/causes.ts`.
 
 For day-first tenants using booking-v3, **form-channel** reports belong here: the form prints `MM/DD/YYYY`, people follow it, and the form reads their input in the tenant's day-first order. This is the opposite direction of mismatch from the shared parser bug. App/email reports from those same tenants belong in the parser issue, not here.

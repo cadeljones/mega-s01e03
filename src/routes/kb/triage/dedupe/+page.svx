@@ -24,6 +24,12 @@ A report belongs with another when evidence supports the **same cause**
 3. Compare causes, not subjects or browser-based intake tags. Unknown tenant, unsupported locale, conflicting evidence or unexplained symptoms require investigation, not an automatic merge.
 4. Keep one issue per established cause, update its distinct-ID count, and verify each fix separately. See the [#4471 split](/kb/incidents/4471-split) for issue links and unresolved reports.
 
+**Closure check:** the course now reports #4471 closed on 5 October: parser **fixed**,
+hint **won't fix — booking-v3 form retired**. Do not call retirement a repair. Before attaching
+a new report to either closed issue, check the current form/version and reproduce it. A
+post-fix report or use of a retired form needs investigation and a linked follow-up or reopening,
+not automatic merging into history.
+
 <Callout>
 Do not keep applying the old subject-only rule while the desk works. Matching words do not establish matching causes.
 </Callout>
