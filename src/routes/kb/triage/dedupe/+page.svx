@@ -1,0 +1,38 @@
+---
+layout: runbook
+title: 'Triage: duplicate reports'
+owner: support desk
+status: active
+reviewed: 2026-10-29
+---
+
+<script>
+  import DedupeExplorer from '#lib/kb/DedupeExplorer.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+</script>
+
+A busy morning brings reports with similar words but sometimes different causes. Keep one
+ticket per established cause, with an auditable count of distinct report IDs.
+
+## The rule
+
+A report belongs with another when evidence supports the **same cause**
+([decision 0002](/kb/decisions/0002-dedupe-by-cause), which supersedes the unchanged historical decision 0001):
+
+1. Keep one copy of each report ID; preserve the body, tenant, channel and timestamps.
+2. Resolve the tenant's locale and booking-form version. For day-first tenants, booking-v3 form reports route to the hint issue; other supported paths route to the parser issue.
+3. Compare causes, not subjects or browser-based intake tags. Unknown tenant, unsupported locale, conflicting evidence or unexplained symptoms require investigation, not an automatic merge.
+4. Keep one issue per established cause, update its distinct-ID count, and verify each fix separately. See the [#4471 split](/kb/incidents/4471-split) for issue links and unresolved reports.
+
+<Callout>
+Do not keep applying the old subject-only rule while the desk works. Matching words do not establish matching causes.
+</Callout>
+
+## Try it
+
+<DedupeExplorer />
+
+## When you are unsure
+
+Keep the report visible and unmerged until the cause is supported. An intake tag is a guess,
+and a calculated cause does not explain every unusual symptom. Investigate before closure.

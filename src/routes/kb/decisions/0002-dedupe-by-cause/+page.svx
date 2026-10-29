@@ -1,0 +1,36 @@
+---
+layout: runbook
+title: '0002 · Merge reports only when the cause matches'
+owner: cadeljones + OpenCode
+status: active
+reviewed: 2026-10-29
+signature: 'cadeljones / OpenCode (openai/gpt-6.1-sol)'
+---
+
+<script>
+  import DedupeExplorer from '#lib/kb/DedupeExplorer.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+**Supersedes:** [0001 · Duplicates share a subject line](/kb/decisions/0001-dedupe-by-subject). That accepted record stays unchanged as history. This is the working rule for the exported KB; it does not assert that the external ticket system has been changed.
+
+## Context
+
+[The #4471 review](/kb/incidents/4471-split) shows that similar date complaints were merged despite different failure mechanisms. A browser-based intake tag also misstates some tenant-specific causes. Waiting for a parser fix while subject-based merging continues would keep hiding the form-hint problem.
+
+## Decision — effective for ongoing triage
+
+Deduplicate repeated export rows by report ID. Merge distinct reports only when evidence supports the same cause. For this incident, use `causeOf` and `sameCause` with the tenant directory: tenant locale, booking-form version and report channel determine the current classification, not subject or browser locale. Put booking-v3 form reports from day-first tenants in the hint issue; the other supported day-first paths go to the parser issue.
+
+No tenant, unsupported locale, contradictory reproduction or unknown cause means **do not auto-merge**. Keep the report visible and investigate. The same calculated cause is a routing rule, not proof that an unusual body has been explained.
+
+## Consequences
+
+- Same subject can mean different issues; different subjects can mean the same issue.
+- Keep one engineering issue per established cause and update counts using unique report IDs.
+- Reproduce each problem, test its own fix, and check anomalous bodies before closure.
+- Keep export-time counts separate from the desk's later arrivals; review pages against rendered tables, not old prose.
+
+<DedupeExplorer />
+
+<RenderStamp {signature} />

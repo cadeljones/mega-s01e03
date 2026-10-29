@@ -1,0 +1,36 @@
+{
+  "renderedAt": "2026-10-29T14:05:05.566Z",
+  "method": "Svelte 5 server render of mdsvex pages, supplied layout and data components; client hydration included",
+  "pages": [
+    {
+      "route": "/kb",
+      "source": "/src/routes/kb/+page.svx",
+      "artifact": "kb/index.html"
+    },
+    {
+      "route": "/kb/decisions/0001-dedupe-by-subject",
+      "source": "/src/routes/kb/decisions/0001-dedupe-by-subject/+page.svx",
+      "artifact": "kb/decisions/0001-dedupe-by-subject/index.html"
+    },
+    {
+      "route": "/kb/decisions/0002-dedupe-by-cause",
+      "source": "/src/routes/kb/decisions/0002-dedupe-by-cause/+page.svx",
+      "artifact": "kb/decisions/0002-dedupe-by-cause/index.html"
+    },
+    {
+      "route": "/kb/incidents/4471-split",
+      "source": "/src/routes/kb/incidents/4471-split/+page.svx",
+      "artifact": "kb/incidents/4471-split/index.html"
+    },
+    {
+      "route": "/kb/incidents/4471",
+      "source": "/src/routes/kb/incidents/4471/+page.svx",
+      "artifact": "kb/incidents/4471/index.html"
+    },
+    {
+      "route": "/kb/triage/dedupe",
+      "source": "/src/routes/kb/triage/dedupe/+page.svx",
+      "artifact": "kb/triage/dedupe/index.html"
+    }
+  ]
+}
