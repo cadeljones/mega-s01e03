@@ -52,7 +52,10 @@ test('rendered page has real component output, issue links, desk ref and no miss
   for (const text of ['379', '33', '412', '427', 'R-41202', 'R-41620', 'same cause', 'reports received and merged']) {
     assert.ok(html.includes(text), text);
   }
-  assert.ok(html.includes(deskRef('cadeljones / OpenCode (openai/gpt-6.1-sol)')));
+  const source = readFileSync('src/routes/kb/incidents/4471-split/+page.svx', 'utf8');
+  const signature = source.match(/^signature: '([^']+)'$/m)?.[1];
+  assert.ok(signature?.startsWith('v1.'), 'course-issued signature, not an author label');
+  assert.ok(html.includes(deskRef(signature)));
   assert.ok(!html.includes("no desk ref: this page isn't signed"));
   assert.ok(html.includes('https://github.com/cadeljones/mega-s01e03/issues/1'));
   assert.ok(html.includes('https://github.com/cadeljones/mega-s01e03/issues/2'));

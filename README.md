@@ -61,9 +61,10 @@ its source and verbatim reasons are preserved in `src/lib/data/engineering-updat
 - Working triage: [`triage/dedupe`](src/routes/kb/triage/dedupe/+page.svx), updated now so ongoing reports do not repeat the merge error.
 - Issue body copies: [`issues/`](issues/). The actual tickets are the GitHub issues linked above.
 
-The new page and new decision are signed `cadeljones / OpenCode (openai/gpt-6.1-sol)`;
-`RenderStamp` computes their desk reference **DR-A51T-EJWQ**. This identifies the harness-assisted
-review, not approval by the fictional desk. Accepted decision 0001 is byte-for-byte unchanged;
+The new page and new decision carry the exact **course-issued signature** in frontmatter,
+as required by `start-challenge`; the author label remains in `owner`. `RenderStamp` computes
+their desk reference **DR-9XW6-623W** from that signature. It is not approval by the fictional desk.
+Accepted decision 0001 is byte-for-byte unchanged;
 0002 explicitly supersedes it. The old incident page is marked historical, not silently erased.
 
 ### Reproduce and view

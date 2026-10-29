@@ -4,7 +4,7 @@ title: '#4471: two date problems, two closure outcomes'
 owner: cadeljones + OpenCode
 status: closed
 reviewed: 2026-10-29
-signature: 'cadeljones / OpenCode (openai/gpt-6.1-sol)'
+signature: 'v1.eyJzdWIiOiI0NjY5IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMyODI5NzEsImV4cCI6MTc5MzM2OTM3MX0.3r2lpFKKnFLXkbFqlU50QIiV53NDfPB2cnciPC462ls'
 ---
 
 <script>
